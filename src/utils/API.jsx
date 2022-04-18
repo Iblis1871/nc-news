@@ -1,0 +1,37 @@
+import axios from "axios";
+import React from "react";
+
+// to be input once snap & Heroku mount is fixed and complete
+const baseAPI = axios.create({
+  baseURL: "/api",
+});
+
+///// GET TOPICS, ARTICLES AND COMMENTS /////
+
+export const getTopics = () => {
+  return baseAPI.get("/topics").then(({ data }) => {
+    return data.topics;
+  });
+};
+
+export const getArticles = () => {
+  return baseAPI.get("/articles").then(({ data }) => {
+    return data.articles;
+  });
+};
+
+export const getArticleById = async (article_id) => {
+  const { data } = await baseAPI.get(`/articles/${article_id}`);
+  return data.article;
+};
+
+export const getCommentByArticleId = async (article_id) => {
+  const { data } = await baseAPI.get(`/articles/${article_id}/comments`);
+  return data.article;
+};
+
+///// POST, PATCH AND DELETE COMMENTS /////
+
+///// PATCH VOTES /////
+
+//// GET USERS FOR LOGIN /////

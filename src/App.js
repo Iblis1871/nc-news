@@ -1,5 +1,7 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
+import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navigation/Nav";
 
 export default function App() {
@@ -7,7 +9,15 @@ export default function App() {
     <div>
       <Header />
       <Navbar />
-      <h1>WORK IN PROGRESS</h1>
+      <Routes>
+        <Route path="/" />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <h1>UNDER CONSTRUCTION</h1>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhvGMzrK0_ao_1OszEweY8GbIhIw6kHT43ew&usqp=CAU"
+        alt="cat with pc keyboard on sofa"
+      ></img>
     </div>
   );
 }

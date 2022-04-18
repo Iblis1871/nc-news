@@ -7,8 +7,9 @@ Front end project emulating a reddit-like article aggregator with comments, vote
 1.  ⚛️ [React](https://github.com/facebook/create-react-app)
 2.  🐘 [PostgreSQL](https://www.npmjs.com/package/pg)
 3.  💅 [Styled Components](https://www.npmjs.com/package/styled-components)
-4.  🌩️ [Heroku](https://github.com/heroku)
-5.  🃏 [Jest](https://www.npmjs.com/package/jest)
+4.  📮 [Axios](https://www.npmjs.com/package/axios)
+5.  🌩️ [Heroku](https://github.com/heroku)
+6.  🃏 [Jest](https://www.npmjs.com/package/jest)
 
 # Hosted
 
