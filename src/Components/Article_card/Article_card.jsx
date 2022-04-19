@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticles } from "../../utils/API";
+import Article_solo from "../Article_solo/Article_solo";
 import {
   Wrapper,
   Content,
@@ -26,6 +27,7 @@ const Article_card = () => {
   return (
     <div key="article_card">
       {state.map((articles) => {
+        const idClick = `/api/articles/${articles.article_id}`; // <-- not working correctly?
         return (
           <Wrapper>
             <Title>{articles.title}</Title>
@@ -36,8 +38,10 @@ const Article_card = () => {
               Date: {articles.created_at}
               {articles.body}
             </Content>
-            <Link>
-              <a>Article ID: #{articles.article_id}</a>
+            <Link key={idClick}>
+              <Button>
+                <a href={idClick}>Article ID: #{articles.article_id} </a>
+              </Button>
             </Link>
             <Votes>
               <Button> Vote 🔼</Button> || <Button> Downvote 🔽</Button> ||
