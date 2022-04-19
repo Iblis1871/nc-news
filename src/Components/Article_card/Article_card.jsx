@@ -20,7 +20,7 @@ const Article_card = () => {
   }, []);
 
   return (
-    <div>
+    <div key="article_card">
       {state.map(({ title, body, topic, author, created_at, votes }) => {
         return (
           <Wrapper>
@@ -33,12 +33,12 @@ const Article_card = () => {
               {body}
             </Content>
             <Votes>
-              <button>🔼</button> || <button>🔽</button> || Votes {votes}
+              <Button> Vote 🔼</Button> || <Button> Downvote 🔽</Button> ||
+              Votes
+              {votes}
             </Votes>
-            <Button>
-              <button> 💬 Comments</button>
-              <button> ❌ Delete</button>
-            </Button>
+            <Button>💬 Comments</Button>
+            <Button>❌ Delete</Button>
           </Wrapper>
         );
       })}

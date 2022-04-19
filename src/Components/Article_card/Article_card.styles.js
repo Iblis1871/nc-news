@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border: 3px solid red;
+  /* max-width: 600px; */
+  /* grid-template-columns: repeat(auto-fill);
+  grid-gap: 2rem; */
 `;
 export const Content = styled.div`
   display: flex;
@@ -30,4 +33,11 @@ export const Votes = styled.div`
   border: 3px solid yellow;
 `;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+  height: 30px;
+  width: 130px;
+  :hover {
+    color: black;
+    background-color: lightcyan;
+  }
+`;
