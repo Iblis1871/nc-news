@@ -1,9 +1,8 @@
 import axios from "axios";
 import React from "react";
 
-// to be input once snap & Heroku mount is fixed and complete
 const baseAPI = axios.create({
-  baseURL: "/api",
+  baseURL: "https://nc-news-iblis-be.herokuapp.com/api",
 });
 
 ///// GET TOPICS, ARTICLES AND COMMENTS /////
