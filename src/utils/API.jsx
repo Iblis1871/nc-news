@@ -13,16 +13,17 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = () => {
-  return baseAPI.get("/articles").then(({ data }) => {
-    console.log(data.articles, "<<axios get request");
-    return data.articles;
-  });
-};
-
-export const getArticleById = async (article_id) => {
-  const { data } = await baseAPI.get(`/articles/${article_id}`);
-  return data.article; // refactor using Paul example, not needed with axios
+export const getArticles = (article_id) => {
+  return baseAPI
+    .get("/articles", {
+      params: {
+        article_id,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
 };
 
 export const getCommentByArticleId = async (article_id) => {

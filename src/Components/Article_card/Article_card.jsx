@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getArticles } from "../../utils/API";
 import {
   Wrapper,
@@ -9,33 +10,36 @@ import {
   Votes,
 } from "./Article_card.styles";
 
+// getting solo article not working
+
 const Article_card = () => {
   const [state, setState] = useState([]);
+  const { article_id } = useParams();
 
   useEffect(() => {
-    getArticles().then((articlesFromApi) => {
-      console.log(articlesFromApi, "<<incoming from api");
-      setState(articlesFromApi);
+    getArticles(article_id).then((articlesFromApi) => {
+      setState(articlesFromApi.articles);
     });
-  }, []);
+  }, [article_id]);
 
   return (
     <div key="article_card">
-      {state.map(({ title, body, topic, author, created_at, votes }) => {
+      {state.map((articles) => {
         return (
           <Wrapper>
-            <Title>{title}</Title>
+            <Title>{articles.title}</Title>
             <AuthorTopic>
-              Author: @{author} || Topic: #{topic}
+              Author: @{articles.author} || Topic: #{articles.topic}
             </AuthorTopic>
             <Content>
-              {created_at}
-              {body}
+              Date: {articles.created_at}
+              {articles.body}
             </Content>
+            Article ID: #{articles.article_id}
             <Votes>
               <Button> Vote 🔼</Button> || <Button> Downvote 🔽</Button> ||
               Votes
-              {votes}
+              {articles.votes}
             </Votes>
             <Button>💬 Comments</Button>
             <Button>❌ Delete</Button>

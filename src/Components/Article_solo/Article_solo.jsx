@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Article_solo() {
+const Article_solo = () => {
   return <div>Article_solo</div>;
-}
+};
+
+export default Article_solo;

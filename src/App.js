@@ -11,10 +11,12 @@ export default function App() {
       <Header />
       <Navbar />
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Article_card />} />
         <Route path="/articles" element={<Article_card />} />
+        <Route path="/articles/:article_id" element={<Article_card />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+
       <h1>UNDER CONSTRUCTION</h1>
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhvGMzrK0_ao_1OszEweY8GbIhIw6kHT43ew&usqp=CAU"
