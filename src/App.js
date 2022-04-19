@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Article_card from "./Components/Article_card/Article_card";
 import Header from "./Components/Header/Header";
 import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navigation/Nav";
@@ -11,6 +12,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" />
+        <Route path="/articles" element={<Article_card />} />
         <Route path="/login" element={<Login />} />
       </Routes>
       <h1>UNDER CONSTRUCTION</h1>

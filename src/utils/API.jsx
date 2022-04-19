@@ -15,6 +15,7 @@ export const getTopics = () => {
 
 export const getArticles = () => {
   return baseAPI.get("/articles").then(({ data }) => {
+    console.log(data.articles, "<<<get articles");
     return data.articles;
   });
 };
