@@ -15,7 +15,20 @@ export const getTopics = () => {
 
 export const getArticles = (article_id) => {
   return baseAPI
-    .get("/articles", {
+    .get(`/articles/`, {
+      params: {
+        article_id,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+};
+
+export const getArticlesById = (article_id) => {
+  return baseAPI
+    .get(`/articles/${article_id}`, {
       params: {
         article_id,
       },

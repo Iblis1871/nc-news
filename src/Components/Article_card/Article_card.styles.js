@@ -41,3 +41,7 @@ export const Button = styled.button`
     background-color: lightcyan;
   }
 `;
+
+export const Link = styled.div`
+  border: 3px solid orange;
+`;

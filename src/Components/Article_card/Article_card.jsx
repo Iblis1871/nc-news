@@ -8,9 +8,10 @@ import {
   Button,
   AuthorTopic,
   Votes,
+  Link,
 } from "./Article_card.styles";
 
-// getting solo article not working
+// getting solo link ongto article to be fixed
 
 const Article_card = () => {
   const [state, setState] = useState([]);
@@ -35,7 +36,9 @@ const Article_card = () => {
               Date: {articles.created_at}
               {articles.body}
             </Content>
-            Article ID: #{articles.article_id}
+            <Link>
+              <a>Article ID: #{articles.article_id}</a>
+            </Link>
             <Votes>
               <Button> Vote 🔼</Button> || <Button> Downvote 🔽</Button> ||
               Votes
