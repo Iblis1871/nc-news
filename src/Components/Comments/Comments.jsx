@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentByArticleId } from "../../utils/API";
+import Articles_topic from "../Articles_Topic/Articles_Topic";
 import {
   Wrapper,
   Content,
@@ -10,7 +11,7 @@ import {
   Votes,
 } from "./Comments.styles";
 
-const Comments = ({ show }) => {
+const Comments = () => {
   const { article_id } = useParams();
   const [upCount, setUpCount] = useState(0);
   const [downCount, setDownCount] = useState(0);

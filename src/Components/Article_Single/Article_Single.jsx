@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticlesById } from "../../utils/API";
+import Comments from "../Comments/Comments";
 import {
   Wrapper,
   Content,
@@ -72,6 +73,7 @@ const Article_Single = () => {
               {articles.votes}
             </Votes>
             <Button onClick={deleteClick}>❌ Delete</Button>
+            <Comments />
           </Wrapper>
         );
       })}
