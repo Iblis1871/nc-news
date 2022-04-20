@@ -15,6 +15,7 @@ export const Content = styled.div`
   align-items: center;
   padding: 5px;
   border: 3px solid green;
+  word-spacing: 1px;
 `;
 
 export const Title = styled.div`

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, usearticle, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getArticles, getArticlesById } from "../../utils/API";
-import Article_solo from "../Article_solo/Article_solo";
+import { getArticles } from "../../utils/API";
 import {
   Wrapper,
   Content,
@@ -12,31 +11,47 @@ import {
 } from "./Article_card.styles";
 
 const Article_card = () => {
-  const [state, setState] = useState([]);
+  const [article, setArticle] = useState([]);
   const { article_id } = useParams();
-  const [upCount, setUpCount] = useState(0);
-
-  const upVoteClick = () => {
-    setUpCount(upCount + 1);
-  };
+  const [err, setErr] = useState(null);
 
   const deleteClick = () => {
     alert("Do you really want to delete this?");
   };
 
   useEffect(() => {
-    getArticles(article_id).then((articlesFromApi) => {
-      setState(articlesFromApi.articles);
-    });
+    getArticles(article_id)
+      .then((articlesFromApi) => {
+        console.log(articlesFromApi);
+        setArticle(articlesFromApi.articles);
+        setErr(null);
+      })
+      .catch((err) => {
+        setErr("article not found");
+      });
   }, [article_id]);
+
+  if (err)
+    return (
+      <p>
+        "Article not found"
+        <br></br>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhvGMzrK0_ao_1OszEweY8GbIhIw6kHT43ew&usqp=CAU"
+          alt="cat with pc keyboard on sofa"
+        ></img>
+      </p>
+    );
 
   return (
     <div key="article_card">
-      {state.map((articles) => {
-        const idClick = `/articles/${articles.article_id}`; // <-- not working correctly?
+      {article.map((articles) => {
+        const idClick = `/articles/${articles.article_id}`;
         return (
           <Wrapper>
-            <Title>{articles.title}</Title>
+            <Link to={idClick}>
+              <Title>{articles.title}</Title>
+            </Link>
             <AuthorTopic>
               Author: @{articles.author} || Topic: #{articles.topic}
             </AuthorTopic>
@@ -45,9 +60,9 @@ const Article_card = () => {
               {articles.body}
             </Content>
             <Votes>
-              <Button onClick={upVoteClick}> {upCount} Vote 🔼</Button> ||{" "}
-              <Button> Downvote 🔽</Button> || Votes
-              {articles.votes}
+              <Link to={idClick}>
+                <Button> ⭐ Votes {articles.votes}</Button>
+              </Link>
             </Votes>
             <Link to={idClick}>
               <Button>💬 Comments</Button>

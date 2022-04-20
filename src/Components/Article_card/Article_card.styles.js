@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   /* grid-template-columns: repeat(auto-fill);
   grid-gap: 2rem; */
 `;
+
 export const Content = styled.div`
   display: flex;
   align-items: center;
