@@ -7,26 +7,55 @@ const baseAPI = axios.create({
 
 ///// GET TOPICS, ARTICLES AND COMMENTS /////
 
-export const getTopics = () => {
-  return baseAPI.get("/topics").then(({ data }) => {
-    return data.topics;
-  });
+export const getTopics = (slug) => {
+  return baseAPI
+    .get("/topics", {
+      params: {
+        slug,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
 };
 
-export const getArticles = () => {
-  return baseAPI.get("/articles").then(({ data }) => {
-    return data.articles;
-  });
+export const getArticles = (article_id) => {
+  return baseAPI
+    .get(`/articles/`, {
+      params: {
+        article_id,
+      },
+    })
+    .then(({ data }) => {
+      return data;
+    });
 };
 
-export const getArticleById = async (article_id) => {
-  const { data } = await baseAPI.get(`/articles/${article_id}`);
-  return data.article;
+export const getArticlesById = (article_id) => {
+  return baseAPI
+    .get(`/articles/${article_id}`, {
+      params: {
+        article_id,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
 };
 
-export const getCommentByArticleId = async (article_id) => {
-  const { data } = await baseAPI.get(`/articles/${article_id}/comments`);
-  return data.article;
+export const getCommentByArticleId = (article_id) => {
+  return baseAPI
+    .get(`/articles/${article_id}/comments`, {
+      params: {
+        article_id,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
 };
 
 ///// POST, PATCH AND DELETE COMMENTS /////

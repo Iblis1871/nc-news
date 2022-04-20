@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getArticlesById } from "../../utils/API";
+import React, { useEffect, usearticle, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getArticles } from "../../utils/API";
 import {
   Wrapper,
   Content,
@@ -8,31 +8,22 @@ import {
   Button,
   AuthorTopic,
   Votes,
-} from "./Article_solo.styles";
+} from "./Articles.styles";
 
-const Article_solo = () => {
-  const [soloArticle, setSoloArticle] = useState([]);
+const Articles = () => {
+  const [article, setArticle] = useState([]);
   const { article_id } = useParams();
-  const [upCount, setUpCount] = useState(0);
-  const [downCount, setDownCount] = useState(0);
   const [err, setErr] = useState(null);
-
-  const upVoteClick = () => {
-    setUpCount(upCount + 1);
-  };
-
-  const downVoteClick = () => {
-    setDownCount(downCount - 1);
-  };
 
   const deleteClick = () => {
     alert("Do you really want to delete this?");
   };
 
   useEffect(() => {
-    getArticlesById(article_id)
+    getArticles(article_id)
       .then((articlesFromApi) => {
-        setSoloArticle(articlesFromApi.articles);
+        console.log(articlesFromApi);
+        setArticle(articlesFromApi.articles);
         setErr(null);
       })
       .catch((err) => {
@@ -53,24 +44,29 @@ const Article_solo = () => {
     );
 
   return (
-    <div key="Article_solo">
-      {soloArticle.map((articles) => {
+    <div key="Articles">
+      {article.map((articles) => {
+        const idClick = `/articles/${articles.article_id}`;
         return (
           <Wrapper>
-            <Title>{articles.title}</Title>
+            <Link to={idClick}>
+              <Title>{articles.title}</Title>
+            </Link>
             <AuthorTopic>
               Author: @{articles.author} || Topic: #{articles.topic}
             </AuthorTopic>
             <Content>
               Date: {articles.created_at}
               {articles.body}
-              Article ID: #{articles.article_id}
             </Content>
             <Votes>
-              <Button onClick={upVoteClick}> {upCount} 🔼</Button> ||
-              <Button onClick={downVoteClick}> {downCount} 🔽</Button> ||
-              {articles.votes}
+              <Link to={idClick}>
+                <Button> ⭐ Votes {articles.votes}</Button>
+              </Link>
             </Votes>
+            <Link to={idClick}>
+              <Button>💬 Comments</Button>
+            </Link>
             <Button onClick={deleteClick}>❌ Delete</Button>
           </Wrapper>
         );
@@ -79,4 +75,4 @@ const Article_solo = () => {
   );
 };
 
-export default Article_solo;
+export default Articles;
