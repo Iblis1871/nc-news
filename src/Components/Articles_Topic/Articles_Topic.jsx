@@ -14,9 +14,9 @@ const Articles_topic = () => {
   }, []);
   return (
     <div>
-      {topics.map((topic) => {
+      {topics.map((topic, index) => {
         return (
-          <Wrapper>
+          <Wrapper key={index}>
             <Content>
               #{topic.slug}
               <br></br>
