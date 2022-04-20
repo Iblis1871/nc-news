@@ -1,4 +1,4 @@
-import React, { useEffect, usearticle, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticles } from "../../utils/API";
 import {
@@ -45,20 +45,17 @@ const Articles = () => {
 
   return (
     <div key="Articles">
-      {article.map((articles) => {
+      {article.map((articles, index) => {
         const idClick = `/articles/${articles.article_id}`;
         return (
-          <Wrapper>
+          <Wrapper key={index}>
             <Link to={idClick}>
               <Title>{articles.title}</Title>
             </Link>
             <AuthorTopic>
               Author: @{articles.author} || Topic: #{articles.topic}
             </AuthorTopic>
-            <Content>
-              Date: {articles.created_at}
-              {articles.body}
-            </Content>
+            <Content>Date: {articles.created_at}</Content>
             <Votes>
               <Link to={idClick}>
                 <Button> ⭐ Votes {articles.votes}</Button>

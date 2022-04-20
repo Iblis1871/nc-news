@@ -15,7 +15,6 @@ export const getTopics = (slug) => {
       },
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 };

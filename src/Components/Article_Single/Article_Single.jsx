@@ -8,9 +8,9 @@ import {
   Button,
   AuthorTopic,
   Votes,
-} from "./Article_solo.styles";
+} from "./Article_Single.styles";
 
-const Article_solo = () => {
+const Article_Single = () => {
   const [soloArticle, setSoloArticle] = useState([]);
   const { article_id } = useParams();
   const [upCount, setUpCount] = useState(0);
@@ -53,7 +53,7 @@ const Article_solo = () => {
     );
 
   return (
-    <div key="Article_solo">
+    <div key="Article_Single">
       {soloArticle.map((articles) => {
         return (
           <Wrapper>
@@ -79,4 +79,4 @@ const Article_solo = () => {
   );
 };
 
-export default Article_solo;
+export default Article_Single;
