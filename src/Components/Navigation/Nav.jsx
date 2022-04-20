@@ -9,7 +9,6 @@ export default function Navbar() {
         <nav>
           <Link to="/">Home</Link> ||
           <Link to="/articles">Articles</Link> ||
-          <Link to="/comments">Comments</Link> ||
           <Link to="/topics">Topics</Link> ||
           <Link to="/login">Login</Link> ||
         </nav>

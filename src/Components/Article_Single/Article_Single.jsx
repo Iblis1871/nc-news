@@ -54,9 +54,9 @@ const Article_Single = () => {
 
   return (
     <div key="Article_Single">
-      {soloArticle.map((articles) => {
+      {soloArticle.map((articles, index) => {
         return (
-          <Wrapper>
+          <Wrapper key={index}>
             <Title>{articles.title}</Title>
             <AuthorTopic>
               Author: @{articles.author} || Topic: #{articles.topic}

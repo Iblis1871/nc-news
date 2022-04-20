@@ -22,7 +22,6 @@ const Articles = () => {
   useEffect(() => {
     getArticles(article_id)
       .then((articlesFromApi) => {
-        console.log(articlesFromApi);
         setArticle(articlesFromApi.articles);
         setErr(null);
       })

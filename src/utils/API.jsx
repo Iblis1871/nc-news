@@ -39,7 +39,6 @@ export const getArticlesById = (article_id) => {
       },
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 };
@@ -52,7 +51,6 @@ export const getCommentByArticleId = (article_id) => {
       },
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 };
