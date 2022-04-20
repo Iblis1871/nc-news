@@ -7,10 +7,17 @@ const baseAPI = axios.create({
 
 ///// GET TOPICS, ARTICLES AND COMMENTS /////
 
-export const getTopics = () => {
-  return baseAPI.get("/topics").then(({ data }) => {
-    return data.topics;
-  });
+export const getTopics = (slug) => {
+  return baseAPI
+    .get("/topics", {
+      params: {
+        slug,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
 };
 
 export const getArticles = (article_id) => {
@@ -21,7 +28,6 @@ export const getArticles = (article_id) => {
       },
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 };
@@ -39,9 +45,17 @@ export const getArticlesById = (article_id) => {
     });
 };
 
-export const getCommentByArticleId = async (article_id) => {
-  const { data } = await baseAPI.get(`/articles/${article_id}/comments`);
-  return data.article;
+export const getCommentByArticleId = (article_id) => {
+  return baseAPI
+    .get(`/articles/${article_id}/comments`, {
+      params: {
+        article_id,
+      },
+    })
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
 };
 
 ///// POST, PATCH AND DELETE COMMENTS /////

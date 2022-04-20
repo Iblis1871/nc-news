@@ -8,9 +8,9 @@ import {
   Button,
   AuthorTopic,
   Votes,
-} from "./Article_card.styles";
+} from "./Articles.styles";
 
-const Article_card = () => {
+const Articles = () => {
   const [article, setArticle] = useState([]);
   const { article_id } = useParams();
   const [err, setErr] = useState(null);
@@ -44,7 +44,7 @@ const Article_card = () => {
     );
 
   return (
-    <div key="article_card">
+    <div key="Articles">
       {article.map((articles) => {
         const idClick = `/articles/${articles.article_id}`;
         return (
@@ -75,4 +75,4 @@ const Article_card = () => {
   );
 };
 
-export default Article_card;
+export default Articles;
