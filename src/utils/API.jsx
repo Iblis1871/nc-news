@@ -68,11 +68,4 @@ export const updateVotesAdd = async (article_id) => {
   return data;
 };
 
-export const updateVotesDec = async (article_id) => {
-  const { data } = await baseAPI.patch(`/articles/${article_id}`, {
-    inc_votes: -1,
-  });
-  return data;
-};
-
 //// GET USERS FOR LOGIN /////
