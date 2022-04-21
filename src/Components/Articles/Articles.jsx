@@ -12,7 +12,7 @@ import {
 
 const Articles = () => {
   const [article, setArticle] = useState([]);
-  const { article_id } = useParams();
+  const { article_id, topic } = useParams();
   const [err, setErr] = useState(null);
 
   const deleteClick = () => {
@@ -42,10 +42,12 @@ const Articles = () => {
       </p>
     );
 
+  // filter by topic / new component / query syntax / route
+
   return (
     <div key="Articles">
       {article.map((articles, index) => {
-        const idClick = `/articles/${articles.article_id}`;
+        let idClick = `/articles/${articles.article_id}`;
         return (
           <Wrapper key={index}>
             <Link to={idClick}>

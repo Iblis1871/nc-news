@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<Article_Single />} />
         <Route path="/articles/:article_id/comments" element={<Comments />} />
-        <Route path="/topics" element={<Articles_Topic />} />
+        <Route path="/topics/articles/:topic" element={<Articles />} />
         <Route path="/login" element={<Login />} />
       </Routes>
 

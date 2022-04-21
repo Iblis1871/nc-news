@@ -23,18 +23,19 @@ export default function Navbar() {
         <nav>
           <Link to="/">Home</Link> ||
           <Link to="/articles">Articles</Link> ||
+          <Link to="/articles/comments">Comment</Link> ||
           <Link to="/login">Login</Link>
           <br></br>
           <Trending>
             Trending topics......
-            <Link to="/articles/coding"> 🤖 #Coding</Link> ||
-            <Link to="/articles/cooking"> 🥙 #Cooking</Link> ||
-            <Link to="/articles/football"> ⚽ #Football</Link> ||
-            <Link onClick={noArticlesClick} to="/articles/StarTrek">
+            <Link to="/topics/articles/coding"> 🤖 #Coding</Link> ||
+            <Link to="/topics/articles/cooking"> 🥙 #Cooking</Link> ||
+            <Link to="/topics/articles/football"> ⚽ #Football</Link> ||
+            <Link onClick={noArticlesClick} to="/topics/articles/StarTrek">
               🖖 #Star Trek
             </Link>{" "}
             ||
-            <Link onClick={noArticlesClick} to="/articles/elves">
+            <Link onClick={noArticlesClick} to="/topics/articles/elves">
               🧝 #Elves
             </Link>{" "}
             ||

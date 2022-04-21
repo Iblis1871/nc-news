@@ -30,7 +30,7 @@ export const AuthorTopic = styled.div`
   border: 3px solid blue;
 `;
 
-export const Votes = styled.div`
+export const VotesStyles = styled.div`
   border: 3px solid yellow;
 `;
 
