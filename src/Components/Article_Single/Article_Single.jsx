@@ -66,6 +66,7 @@ const Article_Single = () => {
               Date: {articles.created_at}
               {articles.body}
               Article ID: #{articles.article_id}
+              {/* add in heading and make the styles unique */}
             </Content>
             <Votes>
               <Button onClick={upVoteClick}> {upCount} 🔼</Button> ||
