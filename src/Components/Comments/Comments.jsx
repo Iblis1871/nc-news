@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentByArticleId } from "../../utils/API";
 import Articles_topic from "../Articles_Topic/Articles_Topic";
+import Delete from "../DeleteComment/DeleteComment";
 import {
   Wrapper,
   Content,
@@ -49,7 +50,10 @@ const Comments = () => {
           <Button onClick={downVoteClick}> {downCount} 🔽</Button> ||
           {comment.votes}
         </Votes>
-        <Button onClick={deleteClick}>❌ Delete</Button>
+        <Delete
+          comment_id={comment.comment_id}
+          setComments={setComments}
+        ></Delete>
       </Wrapper>
     );
   });

@@ -59,6 +59,10 @@ export const getCommentByArticleId = (article_id) => {
 
 ///// POST, PATCH AND DELETE COMMENTS /////
 
+export const deleteComment = (comment_id) => {
+  return baseAPI.delete(`/comments/${comment_id}`);
+};
+
 ///// PATCH VOTES /////
 
 export const updateVotesAdd = async (article_id) => {
