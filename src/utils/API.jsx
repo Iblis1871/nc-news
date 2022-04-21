@@ -19,11 +19,12 @@ export const getTopics = (slug) => {
     });
 };
 
-export const getArticles = (article_id) => {
+export const getArticles = (article_id, topic) => {
   return baseAPI
     .get(`/articles/`, {
       params: {
         article_id,
+        topic,
       },
     })
     .then(({ data }) => {
@@ -31,11 +32,12 @@ export const getArticles = (article_id) => {
     });
 };
 
-export const getArticlesById = (article_id) => {
+export const getArticlesById = (article_id, topic) => {
   return baseAPI
     .get(`/articles/${article_id}`, {
       params: {
         article_id,
+        topic,
       },
     })
     .then(({ data }) => {
@@ -58,5 +60,19 @@ export const getCommentByArticleId = (article_id) => {
 ///// POST, PATCH AND DELETE COMMENTS /////
 
 ///// PATCH VOTES /////
+
+export const updateVotesAdd = async (article_id) => {
+  const { data } = await baseAPI.patch(`/articles/${article_id}`, {
+    inc_votes: 1,
+  });
+  return data;
+};
+
+export const updateVotesDec = async (article_id) => {
+  const { data } = await baseAPI.patch(`/articles/${article_id}`, {
+    inc_votes: -1,
+  });
+  return data;
+};
 
 //// GET USERS FOR LOGIN /////
