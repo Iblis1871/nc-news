@@ -6,9 +6,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border: 3px solid red;
-  /* max-width: 600px; */
-  /* grid-template-columns: repeat(auto-fill);
-  grid-gap: 2rem; */
+
+  /* @media screen and (max-width: 768px) {
+    max-width: 600px;
+    grid-template-columns: repeat(auto-fill);
+    grid-gap: 2rem;
+    /* this does not work at the moment */
+  /* }  */
 `;
 
 export const Content = styled.div`
