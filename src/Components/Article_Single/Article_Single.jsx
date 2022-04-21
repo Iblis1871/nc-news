@@ -17,6 +17,8 @@ const Article_Single = () => {
   const [soloArticle, setSoloArticle] = useState([]);
   const { article_id } = useParams();
   const [err, setErr] = useState(null);
+  const [newAuthor, setNewAuthor] = useState("");
+  const [newComment, setNewComment] = useState("");
 
   const [postComment, setPostComment] = useState({
     author: "",
@@ -24,17 +26,12 @@ const Article_Single = () => {
   });
 
   const handleSubmit = (event) => {
-    event.append("author", postComment.author);
-    event.append("body", postComment.body);
-  };
-
-  const handleChange = (event) => {
-    console.log(event.target);
-    setPostComment({ ...postComment, [event.target]: event.target.value });
-  };
-
-  const deleteClick = () => {
-    alert("Do you really want to delete this?");
+    event.preventDefault();
+    setPostComment((currentPost) => {
+      return { ...currentPost, author: newAuthor, body: newComment };
+    });
+    setNewAuthor("");
+    setNewComment("");
   };
 
   useEffect(() => {
@@ -83,20 +80,22 @@ const Article_Single = () => {
             </VotesStyles>
             <Form onSubmit={handleSubmit}>
               <input
-                type="author"
+                onChange={(event) => setNewAuthor(event.target.value)}
+                value={newAuthor}
+                id="author-update"
                 name="author"
+                type="text"
                 placeholder="Enter author"
-                value={postComment.author}
-                onChange={handleChange}
               />
               <input
-                type="comment"
-                name="comment"
-                placeholder="Enter a Comment"
-                value={postComment.comment}
-                onChange={handleChange}
+                onChange={(event) => setNewComment(event.target.value)}
+                value={newComment}
+                id="comment-update"
+                name="body"
+                type="text"
+                placeholder="Enter comment"
               />
-              <Button type="submit">Submit</Button>
+              <Button>Submit</Button>
             </Form>
             <Comments />
           </Wrapper>
