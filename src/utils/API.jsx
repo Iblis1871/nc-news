@@ -19,25 +19,19 @@ export const getTopics = (slug) => {
     });
 };
 
-export const getArticles = (article_id, topic) => {
+export const getArticles = (
+  article_id,
+  topic,
+  sort_by = "created_at",
+  order = "asc"
+) => {
   return baseAPI
     .get(`/articles/`, {
       params: {
         article_id,
         topic,
-      },
-    })
-    .then(({ data }) => {
-      return data;
-    });
-};
-
-export const getArticlesById = (article_id, topic) => {
-  return baseAPI
-    .get(`/articles/${article_id}`, {
-      params: {
-        article_id,
-        topic,
+        sort_by,
+        order,
       },
     })
     .then(({ data }) => {
@@ -57,10 +51,18 @@ export const getCommentByArticleId = (article_id) => {
     });
 };
 
-///// POST, PATCH AND DELETE COMMENTS /////
+///// POST AND DELETE COMMENTS /////
 
 export const deleteComment = (comment_id) => {
   return baseAPI.delete(`/comments/${comment_id}`);
+};
+
+export const postComment = async (article_id) => {
+  const { data } = await baseAPI.post(`/articles/${article_id}/comments`, {
+    username: "",
+    body: "",
+  });
+  return data;
 };
 
 ///// PATCH VOTES /////

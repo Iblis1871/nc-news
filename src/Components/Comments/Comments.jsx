@@ -27,7 +27,6 @@ const Comments = () => {
 
   useEffect(() => {
     getCommentByArticleId(article_id).then((commentsFromApi) => {
-      console.log(commentsFromApi);
       setComments(commentsFromApi.comments);
     });
   }, [article_id]);

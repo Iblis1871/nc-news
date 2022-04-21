@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { deleteComment } from "../../utils/API";
 import { Button } from "./DeleteComment.styles.js";
 

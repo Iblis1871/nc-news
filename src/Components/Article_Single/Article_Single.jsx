@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticlesById } from "../../utils/API";
+import { getArticles } from "../../utils/API";
 import Comments from "../Comments/Comments";
 import Votes from "../Votes/Votes";
 import {
@@ -22,7 +22,7 @@ const Article_Single = () => {
   };
 
   useEffect(() => {
-    getArticlesById(article_id)
+    getArticles(article_id)
       .then((articlesFromApi) => {
         setSoloArticle(articlesFromApi.articles);
         setErr(null);
