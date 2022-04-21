@@ -42,3 +42,8 @@ export const Button = styled.button`
     background-color: lightcyan;
   }
 `;
+export const Form = styled.form`
+  background: palegreen;
+  border: 1px solid black;
+  padding: 3px;
+`;

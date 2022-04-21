@@ -13,7 +13,6 @@ export default function Navbar() {
 
   useEffect(() => {
     getTopics().then((topicsFromApi) => {
-      console.log(topicsFromApi.topics);
       setTopic(topicsFromApi.topics);
     });
   }, []);
@@ -23,7 +22,7 @@ export default function Navbar() {
         <nav>
           <Link to="/">Home</Link> ||
           <Link to="/articles">Articles</Link> ||
-          <Link to="/articles/comments">Comment</Link> ||
+          <Link to="/articles/:article_id/comments">Comment</Link> ||
           <Link to="/login">Login</Link>
           <br></br>
           <Trending>

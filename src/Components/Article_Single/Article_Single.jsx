@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticles } from "../../utils/API";
+import { getArticlesById } from "../../utils/API";
 import Comments from "../Comments/Comments";
 import Votes from "../Votes/Votes";
 import {
@@ -10,6 +10,7 @@ import {
   Button,
   AuthorTopic,
   VotesStyles,
+  Form,
 } from "./Article_Single.styles";
 
 const Article_Single = () => {
@@ -17,12 +18,27 @@ const Article_Single = () => {
   const { article_id } = useParams();
   const [err, setErr] = useState(null);
 
+  const [postComment, setPostComment] = useState({
+    author: "",
+    body: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.append("author", postComment.author);
+    event.append("body", postComment.body);
+  };
+
+  const handleChange = (event) => {
+    console.log(event.target);
+    setPostComment({ ...postComment, [event.target]: event.target.value });
+  };
+
   const deleteClick = () => {
     alert("Do you really want to delete this?");
   };
 
   useEffect(() => {
-    getArticles(article_id)
+    getArticlesById(article_id)
       .then((articlesFromApi) => {
         setSoloArticle(articlesFromApi.articles);
         setErr(null);
@@ -65,7 +81,23 @@ const Article_Single = () => {
                 article_id={articles.article_id}
               ></Votes>
             </VotesStyles>
-            <Button onClick={deleteClick}>❌ Delete</Button>
+            <Form onSubmit={handleSubmit}>
+              <input
+                type="author"
+                name="author"
+                placeholder="Enter author"
+                value={postComment.author}
+                onChange={handleChange}
+              />
+              <input
+                type="comment"
+                name="comment"
+                placeholder="Enter a Comment"
+                value={postComment.comment}
+                onChange={handleChange}
+              />
+              <Button type="submit">Submit</Button>
+            </Form>
             <Comments />
           </Wrapper>
         );
