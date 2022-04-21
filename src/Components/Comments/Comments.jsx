@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentByArticleId } from "../../utils/API";
-import Articles_topic from "../Articles_Topic/Articles_Topic";
 import Delete from "../DeleteComment/DeleteComment";
 import {
   Wrapper,
@@ -26,10 +25,6 @@ const Comments = () => {
     setDownCount(downCount - 1);
   };
 
-  const deleteClick = () => {
-    alert("Do you really want to delete this?");
-  };
-
   useEffect(() => {
     getCommentByArticleId(article_id).then((commentsFromApi) => {
       console.log(commentsFromApi);
@@ -42,7 +37,7 @@ const Comments = () => {
       <Wrapper key={index}>
         <Title>Author: @{comment.author}</Title>
         <AuthorTopic>
-          Date: {comment.created_at} Comment ID: #{comments.comment_id}
+          Date: {comment.created_at} Comment ID: #{comment.comment_id}
         </AuthorTopic>
         <Content>{comment.body}</Content>
         <Votes>
