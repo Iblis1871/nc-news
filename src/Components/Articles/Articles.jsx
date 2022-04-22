@@ -10,22 +10,25 @@ import {
   Votes,
   Select,
   Option,
+  Topic,
 } from "./Articles.styles";
 
 const Articles = () => {
   const [article, setArticle] = useState([]);
-  const { article_id, topic } = useParams();
+  const { article_id } = useParams();
   const [err, setErr] = useState(null);
   const [search, setSearch] = useSearchParams();
   const [order, setOrder] = useState("asc");
   const [sort, setSort] = useState("created_at");
+  const [searchParams] = useSearchParams();
 
   const deleteClick = () => {
     alert("Do you really want to delete this?");
   };
 
+  let topic = searchParams.get("topic");
   useEffect(() => {
-    getArticles(article_id)
+    getArticles(topic)
       .then((articlesFromApi) => {
         setArticle(articlesFromApi.articles);
         setErr(null);
@@ -33,7 +36,7 @@ const Articles = () => {
       .catch((err) => {
         setErr("article not found");
       });
-  }, [article_id]);
+  }, [topic]);
 
   const handleSort = (event) => {
     let sortParams = { sort_by: event.target.value, order_by: order };
@@ -71,7 +74,6 @@ const Articles = () => {
         <Option value="">SORT ARTICLES</Option>
         <Option value="created_at">Date</Option>
         <Option value="votes">Votes</Option>
-        <Option value="topic">Topic</Option>
       </Select>
       <Select key={order} onChange={handleOrder}>
         <Option value="">ORDER ARTICLES</Option>
@@ -80,6 +82,7 @@ const Articles = () => {
       </Select>
       {article.map((articles, index) => {
         let idClick = `/articles/${articles.article_id}`;
+        // console.log(query);
         return (
           <>
             <Wrapper key={index}>
@@ -87,7 +90,10 @@ const Articles = () => {
                 <Title>{articles.title}</Title>
               </Link>
               <AuthorTopic>
-                Author: @{articles.author} || Topic: #{articles.topic}
+                Author: @{articles.author} ||
+                <Link to={`/articles?topic=${articles.topic}`}>
+                  <Topic>Topic: #{articles.topic}</Topic>
+                </Link>
               </AuthorTopic>
               <Content>Date: {articles.created_at}</Content>
               <Votes>
