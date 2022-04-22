@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticlesById } from "../../utils/API";
 import Comments from "../Comments/Comments";
+import PostComment from "../PostComment/PostComment";
 import Votes from "../Votes/Votes";
 import {
   Wrapper,
@@ -15,6 +16,7 @@ const Article_Single = () => {
   const [soloArticle, setSoloArticle] = useState([]);
   const { article_id } = useParams();
   const [err, setErr] = useState(null);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getArticlesById(article_id)
@@ -60,7 +62,11 @@ const Article_Single = () => {
                 article_id={articles.article_id}
               ></Votes>
             </VotesStyles>
-            <Comments />
+            <PostComment
+              article_id={article_id}
+              setComments={setComments}
+            ></PostComment>
+            <Comments comments={comments} setComments={setComments} />
           </Wrapper>
         );
       })}
