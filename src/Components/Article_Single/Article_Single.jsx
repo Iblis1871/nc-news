@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticlesById } from "../../utils/API";
 import Comments from "../Comments/Comments";
+import PostComment from "../PostComment/PostComment";
 import Votes from "../Votes/Votes";
 import {
   Wrapper,
   Content,
   Title,
-  Button,
   AuthorTopic,
   VotesStyles,
 } from "./Article_Single.styles";
@@ -16,10 +16,7 @@ const Article_Single = () => {
   const [soloArticle, setSoloArticle] = useState([]);
   const { article_id } = useParams();
   const [err, setErr] = useState(null);
-
-  const deleteClick = () => {
-    alert("Do you really want to delete this?");
-  };
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getArticlesById(article_id)
@@ -65,8 +62,11 @@ const Article_Single = () => {
                 article_id={articles.article_id}
               ></Votes>
             </VotesStyles>
-            <Button onClick={deleteClick}>❌ Delete</Button>
-            <Comments />
+            <PostComment
+              article_id={article_id}
+              setComments={setComments}
+            ></PostComment>
+            <Comments comments={comments} setComments={setComments} />
           </Wrapper>
         );
       })}

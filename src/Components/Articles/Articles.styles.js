@@ -46,3 +46,16 @@ export const Button = styled.button`
     background-color: lightcyan;
   }
 `;
+export const Option = styled.option``;
+
+export const Select = styled.select`
+  margin-top: 7px;
+  margin: 3px;
+  font-style: italic;
+  height: 30px;
+  width: 150px;
+  :hover {
+    color: black;
+    background-color: lightcyan;
+  }
+`;

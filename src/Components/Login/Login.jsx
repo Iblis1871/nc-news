@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Wrapper, Content } from "./Login.styles";
+import Users from "./Users";
 
 export default function Login() {
   const [errorMessages, setErrorMessages] = useState({});
@@ -58,13 +59,17 @@ export default function Login() {
   );
 
   return (
-    <Wrapper>
-      <div>Sign in</div>
-      <Content>
-        <div>
-          {isSubmitted ? <div>User successfully logged in</div> : renderForm}
-        </div>
-      </Content>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <div>Sign in</div>
+        <Content>
+          <div>
+            {isSubmitted ? <div>User successfully logged in</div> : renderForm}
+          </div>
+        </Content>
+      </Wrapper>
+
+      <Users></Users>
+    </>
   );
 }

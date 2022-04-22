@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 
 const baseAPI = axios.create({
   baseURL: "https://nc-news-iblis-be.herokuapp.com/api",
@@ -19,12 +18,19 @@ export const getTopics = (slug) => {
     });
 };
 
-export const getArticles = (article_id, topic) => {
+export const getArticles = (
+  article_id,
+  topic,
+  sort_by = "created_at",
+  order = "asc"
+) => {
   return baseAPI
     .get(`/articles/`, {
       params: {
         article_id,
         topic,
+        sort_by,
+        order,
       },
     })
     .then(({ data }) => {
@@ -57,7 +63,21 @@ export const getCommentByArticleId = (article_id) => {
     });
 };
 
-///// POST, PATCH AND DELETE COMMENTS /////
+///// POST AND DELETE COMMENTS /////
+
+export const deleteComment = (comment_id) => {
+  return baseAPI.delete(`/comments/${comment_id}`);
+};
+
+export const postComment = async (article_id, newComment, newAuthor) => {
+  console.log(newComment, "<<comment");
+  console.log(newAuthor, "<<author");
+  const { data } = await baseAPI.post(`/articles/${article_id}/comments`, {
+    username: newAuthor,
+    body: newComment,
+  });
+  return data;
+};
 
 ///// PATCH VOTES /////
 
@@ -69,3 +89,9 @@ export const updateVotesAdd = async (article_id) => {
 };
 
 //// GET USERS FOR LOGIN /////
+
+export const getUsers = () => {
+  return baseAPI.get("/users").then(({ data }) => {
+    return data;
+  });
+};
