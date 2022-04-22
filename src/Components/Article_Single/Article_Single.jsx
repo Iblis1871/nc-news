@@ -7,32 +7,14 @@ import {
   Wrapper,
   Content,
   Title,
-  Button,
   AuthorTopic,
   VotesStyles,
-  Form,
 } from "./Article_Single.styles";
 
 const Article_Single = () => {
   const [soloArticle, setSoloArticle] = useState([]);
   const { article_id } = useParams();
   const [err, setErr] = useState(null);
-  const [newAuthor, setNewAuthor] = useState("");
-  const [newComment, setNewComment] = useState("");
-
-  const [postComment, setPostComment] = useState({
-    author: "",
-    body: "",
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setPostComment((currentPost) => {
-      return { ...currentPost, author: newAuthor, body: newComment };
-    });
-    setNewAuthor("");
-    setNewComment("");
-  };
 
   useEffect(() => {
     getArticlesById(article_id)
@@ -78,25 +60,6 @@ const Article_Single = () => {
                 article_id={articles.article_id}
               ></Votes>
             </VotesStyles>
-            <Form onSubmit={handleSubmit}>
-              <input
-                onChange={(event) => setNewAuthor(event.target.value)}
-                value={newAuthor}
-                id="author-update"
-                name="author"
-                type="text"
-                placeholder="Enter author"
-              />
-              <input
-                onChange={(event) => setNewComment(event.target.value)}
-                value={newComment}
-                id="comment-update"
-                name="body"
-                type="text"
-                placeholder="Enter comment"
-              />
-              <Button>Submit</Button>
-            </Form>
             <Comments />
           </Wrapper>
         );

@@ -4,6 +4,7 @@ import Articles from "./Components/Articles/Articles";
 import Article_Single from "./Components/Article_Single/Article_Single";
 import Header from "./Components/Header/Header";
 import Login from "./Components/Login/Login";
+import Users from "./Components/Login/Users";
 import Navbar from "./Components/Navigation/Nav";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/articles/:article_id" element={<Article_Single />} />
         <Route path="/topics/articles/:topic" element={<Articles />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </div>
   );

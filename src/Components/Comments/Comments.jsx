@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentByArticleId } from "../../utils/API";
+import PostComment from "../PostComment/PostComment";
 import Delete from "../DeleteComment/DeleteComment";
 import {
   Wrapper,
@@ -16,6 +17,7 @@ const Comments = () => {
   const [upCount, setUpCount] = useState(0);
   const [downCount, setDownCount] = useState(0);
   const [comments, setComments] = useState([]);
+  // const [author, setAuthor] = useState([]);
 
   const upVoteClick = () => {
     setUpCount(upCount + 1);
@@ -48,6 +50,11 @@ const Comments = () => {
           comment_id={comment.comment_id}
           setComments={setComments}
         ></Delete>
+        <PostComment
+          article_id={article_id}
+          setComments={setComments}
+          // setAuthor={setAuthor}
+        ></PostComment>
       </Wrapper>
     );
   });

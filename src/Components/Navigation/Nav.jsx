@@ -22,7 +22,8 @@ export default function Navbar() {
         <nav>
           <Link to="/">Home</Link> ||
           <Link to="/articles">Articles</Link> ||
-          <Link to="/login">Login</Link>
+          <Link to="/login">Login</Link> ||
+          <Link to="/users">Users</Link>
           <br></br>
           <Trending>
             Trending topics......

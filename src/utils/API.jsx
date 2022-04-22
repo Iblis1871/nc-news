@@ -70,14 +70,11 @@ export const deleteComment = (comment_id) => {
   return baseAPI.delete(`/comments/${comment_id}`);
 };
 
-export const postComment = async (article_id) => {
-  const { data } = await baseAPI
+export const postComment = (article_id, newComment) => {
+  return baseAPI
     .post(`/articles/${article_id}/comments`, {
-      username: "",
-      body: "",
-      params: {
-        article_id,
-      },
+      username: "weegembump",
+      body: newComment,
     })
     .then(({ data }) => {
       return data;
@@ -94,3 +91,9 @@ export const updateVotesAdd = async (article_id) => {
 };
 
 //// GET USERS FOR LOGIN /////
+
+export const getUsers = () => {
+  return baseAPI.get("/users").then(({ data }) => {
+    return data;
+  });
+};

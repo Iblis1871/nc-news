@@ -21,3 +21,5 @@ export const Content = styled.div`
   font-size: 12pt;
   margin-left: 8px;
 `;
+
+export const Image = styled.img``;
