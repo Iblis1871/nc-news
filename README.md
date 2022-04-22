@@ -13,8 +13,16 @@ Front end project emulating a reddit-like article aggregator with comments, vote
 
 # Hosted
 
-Heroku: WIP
+NC-News
+
+_netlify link to go here_
 
 # How to run
 
-WIP
+1. 🍴 Fork and clone this repo
+
+   [https://github.com/Iblis1871/nc-news.git](https://github.com/Iblis1871/nc-news.git)
+
+2. 💽 Install all the dependencies by asking the elves in your terminal to run
+
+   🧝 --> npm install or npm i <-- 🧝
