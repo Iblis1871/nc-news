@@ -48,6 +48,10 @@ export const Button = styled.button`
 `;
 export const Option = styled.option``;
 
+export const Topic = styled.div``;
+
+export const Link = styled.link``;
+
 export const Select = styled.select`
   margin-top: 7px;
   margin: 3px;

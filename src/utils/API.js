@@ -18,16 +18,10 @@ export const getTopics = (slug) => {
     });
 };
 
-export const getArticles = (
-  article_id,
-  topic,
-  sort_by = "created_at",
-  order = "asc"
-) => {
+export const getArticles = (topic, sort_by = "created_at", order = "asc") => {
   return baseAPI
     .get(`/articles/`, {
       params: {
-        article_id,
         topic,
         sort_by,
         order,

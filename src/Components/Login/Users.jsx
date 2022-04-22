@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUsers } from "../../utils/API";
-import { Content, Wrapper, Image } from "./Login.styles";
+import { Content, Wrapper } from "./Login.styles";
 
 const Users = () => {
   const [users, setUsers] = useState([]);

@@ -29,7 +29,7 @@ const Comments = ({ setComments, comments }) => {
     getCommentByArticleId(article_id).then((commentsFromApi) => {
       setComments(commentsFromApi.comments);
     });
-  }, [article_id]);
+  }, [article_id, setComments]);
 
   return comments.map((comment, index) => {
     return (
