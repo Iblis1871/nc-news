@@ -15,7 +15,7 @@ Front end project emulating a reddit-like article aggregator with comments, vote
 
 NC-News
 
-_netlify link to go here_
+[Hosted on Netlify](https://bejewelled-starburst-63ecc9.netlify.app/)\_
 
 # How to run
 
