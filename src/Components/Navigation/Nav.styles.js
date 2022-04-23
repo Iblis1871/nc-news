@@ -1,20 +1,26 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: palegreen;
+  background: palevioletred;
+  padding: 1px;
+  text-align: center;
   border: 1px solid black;
-  padding: 3px;
+  font-family: "Courier New", Courier, monospace;
 `;
 export const Content = styled.div`
-  background: paleturquoise;
-  border: 1px solid black;
+  background: palevioletred;
+  padding: 1px;
   text-align: center;
-  font-size: 20pt;
+  border: 1px solid black;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17pt;
 `;
 
 export const Trending = styled.div`
-  background: lemonchiffon;
-  border: 1px solid black;
+  background: palevioletred;
+  padding: 1px;
   text-align: center;
+  border: 1px solid black;
+  font-family: "Courier New", Courier, monospace;
   font-size: 14pt;
 `;

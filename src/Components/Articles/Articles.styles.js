@@ -1,41 +1,38 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  margin-top: 30px;
+  background-color: lightgrey;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 7px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 3px solid red;
-
-  /* @media screen and (max-width: 768px) {
-    max-width: 600px;
-    grid-template-columns: repeat(auto-fill);
-    grid-gap: 2rem;
-    /* this does not work at the moment */
-  /* }  */
-`;
-
-export const Content = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  border: 3px solid green;
+  flex-direction: row;
+  align-items: centre;
+  border: 3px solid palevioletred;
 `;
 
 export const Title = styled.div`
-  font-size: 2em;
+  font-size: 1.7em;
   display: flex;
   align-items: center;
-  padding: 5px;
-  border: 3px solid green;
+  padding: 2px;
+  /* border: 1px solid darkgray; */
+  text-transform: uppercase;
+  max-width: 666px;
+  min-width: 666px;
 `;
 
 export const AuthorTopic = styled.div`
-  border: 3px solid blue;
+  /* border: 1px solid darkgray; */
+  background-color: lightgray;
+  text-transform: uppercase;
+  padding: 2px;
 `;
 
 export const Votes = styled.div`
-  border: 3px solid yellow;
+  /* border: 1px solid darkgray; */
+  background-color: lightgrey;
+  position: relative;
+  padding: 3px;
 `;
 
 export const Button = styled.button`
